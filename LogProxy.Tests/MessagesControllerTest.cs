@@ -36,7 +36,7 @@ namespace LogProxy.Tests
         public async void PostMessages_OK_Test()
         {
             var result = await _controller.PostMessages(new List<Message>());
-            Assert.IsType<OkObjectResult>(result);
+            Assert.IsType<OkObjectResult>(result.Result);
         }
 
         [Fact]
