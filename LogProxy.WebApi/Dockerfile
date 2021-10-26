@@ -8,11 +8,13 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
 COPY ["LogProxy.WebApi/LogProxy.WebApi.csproj", "LogProxy.WebApi/"]
 RUN dotnet restore "LogProxy.WebApi/LogProxy.WebApi.csproj"
 COPY . .
+RUN dotnet test
 WORKDIR "/src/LogProxy.WebApi"
 RUN dotnet build "LogProxy.WebApi.csproj" -c Release -o /app/build
 

@@ -23,7 +23,8 @@ namespace LogProxy.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<RecordList>> GetMessages()
         {
-            return await _messageService.GetMessages();
+            var items = await _messageService.GetMessages();
+            return Ok(items);
         }
 
         [HttpPost]
@@ -36,7 +37,8 @@ namespace LogProxy.WebApi.Controllers
             {
                 return BadRequest("messages is empty");
             }
-            return await _messageService.MessageTransfer(messages);
+            var items = await _messageService.MessageTransfer(messages);
+            return Ok(items);
         }
     }
 }
