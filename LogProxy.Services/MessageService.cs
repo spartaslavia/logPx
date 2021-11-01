@@ -86,6 +86,11 @@ namespace LogProxy.Services
 
         private InData PrepareData(IList<Message> messages)
         {
+            if (messages == null)
+            {
+                return null;
+            }
+
             var records = new InData();
             foreach (var messagesItem in messages)
             {

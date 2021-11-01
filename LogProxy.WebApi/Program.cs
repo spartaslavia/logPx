@@ -15,8 +15,6 @@ namespace LogProxy.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    //webBuilder.UseStartup<Startup>()
-                    //    .UseUrls("http://localhost:80");
                 });
     }
 }

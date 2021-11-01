@@ -18,7 +18,9 @@ namespace LogProxy.Services
             var user = await Task.Run(() => _users.SingleOrDefault(x => x.Username == username && x.Password == password));
 
             if (user == null)
+            {
                 return null;
+            }
 
             return user.WithoutPassword();
         }

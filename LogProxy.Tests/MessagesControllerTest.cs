@@ -19,35 +19,35 @@ namespace LogProxy.Tests
         }
 
         [Fact]
-        public async void GetMessages_Result_Test()
+        public async void GetMessagesResultTest()
         {
             var result = await _controller.GetMessages();
             Assert.IsType<OkObjectResult>(result.Result);
         }
 
         [Fact]
-        public async void GetMessages_Type_Test()
+        public async void GetMessagesTypeTest()
         {
             var result = await _controller.GetMessages();
             Assert.IsType<ActionResult<RecordList>>(result);
         }
 
         [Fact]
-        public async void PostMessages_OK_Test()
+        public async void PostMessagesOKTest()
         {
             var result = await _controller.PostMessages(new List<Message>());
             Assert.IsType<OkObjectResult>(result.Result);
         }
 
         [Fact]
-        public async void PostMessages_BadRequest_Test()
+        public async void PostMessagesBadRequestTest()
         {
             var result = await _controller.PostMessages(null);
             Assert.IsType<BadRequestObjectResult>(result.Result);
         }
 
         [Fact]
-        public async void PostMessages_Type_Test()
+        public async void PostMessagesTypeTest()
         {
             var result = await _controller.PostMessages(new List<Message>());
             Assert.IsType<ActionResult<RecordList>>(result);

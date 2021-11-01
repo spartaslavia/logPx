@@ -21,9 +21,16 @@ namespace LogProxy.WebApi.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<RecordList>> GetMessages()
         {
             var items = await _messageService.GetMessages();
+            if (items == null)
+            {
+                return NotFound();
+            }
             return Ok(items);
         }
 
@@ -38,6 +45,10 @@ namespace LogProxy.WebApi.Controllers
                 return BadRequest("messages is empty");
             }
             var items = await _messageService.MessageTransfer(messages);
+            if (items == null)
+            {
+                return NotFound();
+            }
             return Ok(items);
         }
     }
